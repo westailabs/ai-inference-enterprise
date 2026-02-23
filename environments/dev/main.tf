@@ -47,3 +47,14 @@ module "network" {
   env_name    = var.env_name
   subnet_cidr = "10.0.1.0/24" # Example overriding default for Dev
 }
+
+# The Compute Module
+# Passes the vpc_id and subnet_id outputs from the network module into the compute module
+module "compute" {
+  source     = "../../modules/compute"
+  project_id = var.project_id
+  region     = var.region
+  env_name   = var.env_name
+  vpc_id     = module.network.vpc_id
+  subnet_id  = module.network.subnet_id
+}
