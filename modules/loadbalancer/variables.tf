@@ -19,3 +19,11 @@ variable "cloud_run_service_name" {
   description = "The name of the Cloud Run service to target with the Serverless NEG"
   type        = string
 }
+
+# ------------------------------------------------------------------------------
+# HTTPS Configuration Variables
+# ------------------------------------------------------------------------------
+# variable "domain_name" {
+#   description = "The domain name to use for the Google Managed SSL Certificate"
+#   type        = string
+# }
