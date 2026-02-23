@@ -58,3 +58,13 @@ module "compute" {
   vpc_id     = module.network.vpc_id
   subnet_id  = module.network.subnet_id
 }
+
+# The Load Balancer Module
+# Passes the Cloud Run service name output from the compute module into the LB
+module "loadbalancer" {
+  source                 = "../../modules/loadbalancer"
+  project_id             = var.project_id
+  region                 = var.region
+  env_name               = var.env_name
+  cloud_run_service_name = module.compute.cloud_run_service_name
+}
