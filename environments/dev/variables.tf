@@ -26,3 +26,11 @@ variable "api_key_payload" {
   type        = string
   sensitive   = true
 }
+
+# ------------------------------------------------------------------------------
+# MONITORING VARIABLES
+# ------------------------------------------------------------------------------
+variable "alert_email" {
+  description = "The email address to send monitoring alerts to"
+  type        = string
+}

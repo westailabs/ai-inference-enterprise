@@ -78,3 +78,13 @@ module "security" {
   compute_service_account_email = module.compute.service_account_email
   api_key_payload               = var.api_key_payload
 }
+
+# The Monitoring Module
+# Provisions Cloud Monitoring alerts (High Error Rate, High Latency) for the Cloud Run service
+module "monitoring" {
+  source                 = "../../modules/monitoring"
+  project_id             = var.project_id
+  env_name               = var.env_name
+  cloud_run_service_name = module.compute.cloud_run_service_name
+  alert_email            = var.alert_email
+}
