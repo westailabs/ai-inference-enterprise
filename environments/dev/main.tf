@@ -68,3 +68,13 @@ module "loadbalancer" {
   env_name               = var.env_name
   cloud_run_service_name = module.compute.cloud_run_service_name
 }
+
+# The Security Module
+# Provisions the Secret Manager secret and binds IAM access to the Compute Service Account
+module "security" {
+  source                        = "../../modules/security"
+  project_id                    = var.project_id
+  env_name                      = var.env_name
+  compute_service_account_email = module.compute.service_account_email
+  api_key_payload               = var.api_key_payload
+}

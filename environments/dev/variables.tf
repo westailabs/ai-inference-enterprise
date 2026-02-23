@@ -17,3 +17,12 @@ variable "env_name" {
   type        = string
   default     = "dev"
 }
+
+# ------------------------------------------------------------------------------
+# SECURITY VARIABLES
+# ------------------------------------------------------------------------------
+variable "api_key_payload" {
+  description = "The secret API key to inject into Secret Manager"
+  type        = string
+  sensitive   = true
+}
