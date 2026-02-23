@@ -20,13 +20,13 @@ resource "google_project_service" "monitoring" {
   disable_on_destroy = false
 }
 
-# Define an Email Notification Channel
-resource "google_monitoring_notification_channel" "email_alert" {
-  display_name = "${var.env_name} Ops Team Email"
-  type         = "email"
+# Define a PagerDuty Notification Channel
+resource "google_monitoring_notification_channel" "pagerduty_alert" {
+  display_name = "${var.env_name} PagerDuty Alerts"
+  type         = "pagerduty"
   project      = var.project_id
   labels = {
-    email_address = var.alert_email
+    service_key = var.pagerduty_service_key
   }
 
   depends_on = [google_project_service.monitoring]
@@ -56,7 +56,7 @@ resource "google_monitoring_alert_policy" "high_error_rate" {
   }
 
   notification_channels = [
-    google_monitoring_notification_channel.email_alert.name
+    google_monitoring_notification_channel.pagerduty_alert.name
   ]
 }
 
@@ -84,6 +84,6 @@ resource "google_monitoring_alert_policy" "high_latency" {
   }
 
   notification_channels = [
-    google_monitoring_notification_channel.email_alert.name
+    google_monitoring_notification_channel.pagerduty_alert.name
   ]
 }

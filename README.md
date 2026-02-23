@@ -37,4 +37,4 @@ This project moves beyond procedural infrastructure scripts and treats Terraform
 3. Run `terraform init` to pull local modules and configure the GCS backend.
 4. Run `terraform apply`. You will be prompted for:
    - `api_key_payload`: A test secret to inject into Secret Manager.
-   - `alert_email`: The email address to receive Cloud Monitoring alerts.
+   - `pagerduty_service_key`: The PagerDuty integration/service key to receive Cloud Monitoring alerts.

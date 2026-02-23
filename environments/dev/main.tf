@@ -86,5 +86,5 @@ module "monitoring" {
   project_id             = var.project_id
   env_name               = var.env_name
   cloud_run_service_name = module.compute.cloud_run_service_name
-  alert_email            = var.alert_email
+  pagerduty_service_key  = var.pagerduty_service_key
 }

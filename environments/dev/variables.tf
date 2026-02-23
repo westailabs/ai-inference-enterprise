@@ -30,7 +30,8 @@ variable "api_key_payload" {
 # ------------------------------------------------------------------------------
 # MONITORING VARIABLES
 # ------------------------------------------------------------------------------
-variable "alert_email" {
-  description = "The email address to send monitoring alerts to"
+variable "pagerduty_service_key" {
+  description = "The PagerDuty service/integration key for alerts"
   type        = string
+  sensitive   = true
 }
